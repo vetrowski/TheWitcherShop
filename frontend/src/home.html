@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('html/_head.htm',{
+"title":"Главная"
+})
+<body>
+	<div class="wrapper">
+		@@include('html/_header.htm',{})
+		<main class="page page_home">
+			<section class="page__main-block main-block">
+				<div class="main-block__container">
+					<div class="main-block__body">
+						<div class="main-block__slider">
+							<div class="main-block__swiper">
+								<div class="main-block__slide slide-main-block">
+									<div class="slide-main-block__content">
+										<h2 data-swiper-parallax="-100" class="slide-main-block__title">Интернет-магазин атрибутики</h2>
+										<div data-swiper-parallax="-150" class="slide-main-block__sub-title">из вселенной «Ведьмака»</div>
+										<div data-swiper-parallax="-200" class="slide-main-block__text">
+											Добро пожаловать на официальный сайт «The Witcher Shop»! В&nbsp;нашем магазине представлен наиболее широкий выбор вещей, аксессуаров, оружия&nbsp;и других изделий вашей любимой вселенной. Мы доставляем товары по всей территории СНГ и&nbsp;сотрудничаем с официальными поставщиками из разных стран.
+										</div>
+									</div>
+									<a href="" data-swiper-parallax="-250" class="slide-main-block__button button">Подробнее</a>
+								</div>
+								<div class="main-block__slide slide-main-block">
+									<div class="slide-main-block__content">
+										<h2 data-swiper-parallax="-100" class="slide-main-block__title">От безделушек до уникальных</h2>
+										<div data-swiper-parallax="-150" class="slide-main-block__sub-title">коллекционных изделий</div>
+										<div data-swiper-parallax="-200" class="slide-main-block__text">
+											В нашем арсенале для вас припасено много крутых вещей, начиная от&nbsp;различных аксессуаров и&nbsp;заканчивая коллекционными клинками. Ассортимент постоянно обновляется. Чтобы ничего не&nbsp;пропустить, подписывайтесь на&nbsp;нашу <a class="articles" href="#mailing">новостную рассылку</a>.
+										</div>
+									</div>
+									<a href="" data-swiper-parallax="-250" class="slide-main-block__button button">Подробнее</a>
+								</div>
+								<div class="main-block__slide slide-main-block">
+									<div class="slide-main-block__content">
+										<h2 data-swiper-parallax="-100" class="slide-main-block__title">Покупай, читай, пиши, сочиняй</h2>
+										<div data-swiper-parallax="-150" class="slide-main-block__sub-title">и присоединяйся к нашему сообществу</div>
+										<div data-swiper-parallax="-200" class="slide-main-block__text">
+											У нас можно не только приобрести интересующие вас товары, но&nbsp;и&nbsp;ознакомиться с&nbsp;актуальными статьями, а&nbsp;также написать свои. Реализуйте свой творческий потенциал, присылайте ваши работы на&nbsp;<a class="articles" href="#contacts">articles@tws.ru</a>, и&nbsp;лучшие из них будут опубликованы на этом сайте. 
+										</div>
+									</div>
+									<a href="" data-swiper-parallax="-250" class="slide-main-block__button button">Подробнее</a>
+								</div>
+							</div>
+							<div class="main-block__controll controll-main-block">
+								<div class="controll-main-block__dotts"></div>
+								<div class="controll-main-block__fraction fraction-controll">
+									<span class="fraction-controll__current">0</span> / <span class="fraction-controll__all">0</span>
+								</div>
+							</div>
+						</div>
+						<div class="main-block__media media-main-block">
+							<!-- <div class="media-main-block__body">
+								<div class="media-main-block__image">
+									<img src="@img/mainpage/main-block/image.png" alt="Картинка">
+								</div>
+								<div class="media-main-block__tips">
+									<button type="button" data-tippy-content="Подсказка" class="media-main-block__tip media-main-block__tip_1"><span>+</span></button>
+									<button type="button" data-tippy-content="Подсказка" class="media-main-block__tip media-main-block__tip_2"><span>+</span></button>
+									<button type="button" data-tippy-content="Подсказка" class="media-main-block__tip media-main-block__tip_3"><span>+</span></button>
+								</div>
+							</div> -->
+						</div>
+					</div>
+					<div class="main-block__advantages advantages-main">
+						<div class="advantages-main__item">
+							<div class="advantages-main__icon">
+								<img src="@img/mainpage/main-block/icons/01.svg" alt="Иконка">
+							</div>
+							<div class="advantages-main__text">Гарантия 100% возврата денежных средств</div>
+						</div>
+						<div class="advantages-main__item">
+							<div class="advantages-main__icon">
+								<img src="@img/mainpage/main-block/icons/02.svg" alt="Иконка">
+							</div>
+							<div class="advantages-main__text">Доставка по России и&nbsp;странам СНГ</div>
+						</div>
+						<div class="advantages-main__item">
+							<div class="advantages-main__icon">
+								<img src="@img/mainpage/main-block/icons/03.svg" alt="Иконка">
+							</div>
+							<div class="advantages-main__text">Возможность оформления заказа без регистрации</div>
+						</div>
+						<div class="advantages-main__item">
+							<div class="advantages-main__icon">
+								<img src="@img/mainpage/main-block/icons/04.svg" alt="Иконка">
+							</div>
+							<div class="advantages-main__text">Скидки постоянным покупателям</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="page__catalog-cards catalog-cards" id="main_catalog">
+				<div class="catalog-cards__container">
+					<div class="catalog-cards__item item-catalog-cards">
+						<div class="item-catalog-cards__body">
+							<h3 class="item-catalog-cards__title">
+								<a href="catalog.html" class="item-catalog-cards__link-title">Книжная лавка</a>
+							</h3>
+							<ul class="item-catalog-cards__list">
+								<li class="item-catalog-cards__item"><a href="catalog.html" class="item-catalog-cards__link">Основная серия</a></li>
+								<li class="item-catalog-cards__item"><a href="catalog.html" class="item-catalog-cards__link">Справочники</a></li>
+								<li class="item-catalog-cards__item"><a href="catalog.html" class="item-catalog-cards__link">Дополнительное</a></li>
+							</ul>
+						</div>
+						<div class="item-catalog-cards__image1">
+							<img src="@img/mainpage/catalog-cards/01.jpg" alt="Картинка">
+						</div>
+					</div>
+					<div class="catalog-cards__item item-catalog-cards">
+						<div class="item-catalog-cards__body">
+							<h3 class="item-catalog-cards__title">
+								<a href="catalog.html" class="item-catalog-cards__link-title">Клинки и ножи</a>
+							</h3>
+							<ul class="item-catalog-cards__list">
+								<li class="item-catalog-cards__item"><a href="catalog.html" class="item-catalog-cards__link">Стальные мечи</a></li>
+								<li class="item-catalog-cards__item"><a href="catalog.html" class="item-catalog-cards__link">Серебряные мечи</a></li>
+								<li class="item-catalog-cards__item"><a href="catalog.html" class="item-catalog-cards__link">Разделочные ножи</a></li>
+							</ul>
+						</div>
+						<div class="item-catalog-cards__image">
+							<img src="@img/mainpage/catalog-cards/02.jpg" alt="Картинка">
+						</div>
+					</div>
+					<div class="catalog-cards__item item-catalog-cards">
+						<div class="item-catalog-cards__body">
+							<h3 class="item-catalog-cards__title">
+								<a href="catalog.html" class="item-catalog-cards__link-title">Сувениры и украшения</a>
+							</h3>
+							<ul class="item-catalog-cards__list">
+								<li class="item-catalog-cards__item"><a href="catalog.html" class="item-catalog-cards__link">Статуэтки и фигурки</a></li>
+								<li class="item-catalog-cards__item"><a href="catalog.html" class="item-catalog-cards__link">Медальоны и подвески</a></li>
+								<li class="item-catalog-cards__item"><a href="catalog.html" class="item-catalog-cards__link">Магниты и плакаты</a></li>
+							</ul>
+						</div>
+						<div class="item-catalog-cards__image">
+							<img src="@img/mainpage/catalog-cards/03.jpg" alt="Картинка">
+						</div>
+					</div>
+					<div class="catalog-cards__item item-catalog-cards">
+						<div class="item-catalog-cards__body">
+							<h3 class="item-catalog-cards__title">
+								<a href="catalog.html" class="item-catalog-cards__link-title">Настольные игры</a>
+							</h3>
+							<ul class="item-catalog-cards__list">
+								<li class="item-catalog-cards__item"><a href="catalog.html" class="item-catalog-cards__link">Классические</a></li>
+								<li class="item-catalog-cards__item"><a href="catalog.html" class="item-catalog-cards__link">Карточные</a></li>
+								<li class="item-catalog-cards__item"><a href="catalog.html" class="item-catalog-cards__link">Стратегические</a></li>
+							</ul>
+						</div>
+						<div class="item-catalog-cards__image">
+							<img src="@img/mainpage/catalog-cards/04.jpg" alt="Картинка">
+						</div>
+					</div>
+					<div class="catalog-cards__item item-catalog-cards">
+						<div class="item-catalog-cards__body">
+							<h3 class="item-catalog-cards__title">
+								<a href="catalog.html" class="item-catalog-cards__link-title">Одежда и обувь</a>
+							</h3>
+							<ul class="item-catalog-cards__list">
+								<li class="item-catalog-cards__item"><a href="catalog.html" class="item-catalog-cards__link">Головные уборы</a></li>
+								<li class="item-catalog-cards__item"><a href="catalog.html" class="item-catalog-cards__link">Одежда</a></li>
+								<li class="item-catalog-cards__item"><a href="catalog.html" class="item-catalog-cards__link">Обувь</a></li>
+							</ul>
+						</div>
+						<div class="item-catalog-cards__image">
+							<img src="@img/mainpage/catalog-cards/05.jpg" alt="Картинка">
+						</div>
+					</div>
+					<div class="catalog-cards__item item-catalog-cards">
+						<div class="item-catalog-cards__body">
+							<h3 class="item-catalog-cards__title">
+								<a href="catalog.html" class="item-catalog-cards__link-title">Прочие товары</a>
+							</h3>
+							<ul class="item-catalog-cards__list">
+								<li class="item-catalog-cards__item"><a href="catalog.html" class="item-catalog-cards__link">Кошельки</a></li>
+								<li class="item-catalog-cards__item"><a href="catalog.html" class="item-catalog-cards__link">Посуда</a></li>
+								<li class="item-catalog-cards__item"><a href="catalog.html" class="item-catalog-cards__link">Чехлы</a></li>
+							</ul>
+						</div>
+						<div class="item-catalog-cards__image">
+							<img src="@img/mainpage/catalog-cards/06.jpg" alt="Картинка">
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="page__hits-products hits-products">
+				@@include('html/_products-slider.htm',{
+				"title": "Хиты продаж",
+				"moretext": "Перейти в каталог"
+				})
+			</section>
+			<section class="page__new-products new-products">
+				@@include('html/_products-new.htm',{
+				"title": "Новинки"
+				})
+			</section>
+			<section class="page__sale-products sale-products sale-products_no-bottom">
+				@@include('html/_products-slider.htm',{
+				"title": "Акции",
+				"moretext": "Все акции"
+				})
+			</section>
+			<!-- <section class="page__sale-products sale-products">
+				@@include('html/_products-slider.htm',{
+				"title": "Акции",
+				"moretext": "Все акции"
+				})
+			</section> -->
+			<!-- <section class="page__new-products new-products new-products_no-top">
+				@@include('html/_products-new.htm',{
+				"title": "Новинки"
+				})
+			</section> -->
+			<!-- <section class="page__sale-products sale-products sale-products_no-bottom">
+				@@include('html/_products-slider.htm',{
+				"title": "Акции",
+				"moretext": "Все акции"
+				})
+			</section> -->
+			<!-- <section class="page__sale-products sale-products">
+				@@include('html/_products-slider.htm',{
+				"title": "Акции",
+				"moretext": "Все акции"
+				})
+			</section> -->
+			<section class="page__articles-module articles-module">
+				<div class="articles-module__container">
+					<h2 class="articles-module__title">Наши статьи</h2>
+					<div class="articles-module__items">
+						<article class="articles-module__item item-article">
+							<a href="" class="item-article__image-ibg">
+								<img src="@img/articles-module/01.jpg" alt="Картинка">
+							</a>
+							<div class="item-article__body">
+								<h4 class="item-article__title">
+									<a href="" class="item-article__link-title">Как заточить клинок?</a>
+								</h4>
+								<div class="item-article__date">24.07.2022</div>
+							</div>
+						</article>
+						<article class="articles-module__item item-article">
+							<a href="" class="item-article__image-ibg">
+								<img src="@img/articles-module/gold.jpg" alt="Картинка">
+							</a>
+							<div class="item-article__body">
+								<h4 class="item-article__title">
+									<a href="" class="item-article__link-title">Нет золота в Серых Горах</a>
+								</h4>
+								<div class="item-article__date">18.03.2020</div>
+							</div>
+						</article>
+						<article class="articles-module__item item-article">
+							<a href="" class="item-article__image-ibg">
+								<img src="@img/articles-module/card.jpeg" alt="Картинка">
+							</a>
+							<div class="item-article__body">
+								<h4 class="item-article__title">
+									<a href="" class="item-article__link-title">Вокруг света за 80 дней</a>
+								</h4>
+								<div class="item-article__date">01.02.2021</div>
+							</div>
+						</article>
+						<article class="articles-module__item item-article">
+							<a href="" class="item-article__image-ibg">
+								<img src="@img/articles-module/breaking_bad.jpg" alt="Картинка">
+							</a>
+							<div class="item-article__body">
+								<h4 class="item-article__title">
+									<a href="" class="item-article__link-title">«Во все тяжкие»</a>
+								</h4>
+								<div class="item-article__date">27.09.2022</div>
+							</div>
+						</article>
+					</div>
+				</div>
+			<!-- <section class="page__lamp-products lamp-products">
+				@@include('html/_products-slider.htm',{
+				"title": "Фонари",
+				"moretext": "Перейти в каталог"
+				})
+			</section> -->
+		</main>
+		@@include('html/_footer.htm',{})
+	</div>
+	@@include('html/_popup.htm',{})
+	@@include('html/_js.htm',{})
+</body>
+
+</html>

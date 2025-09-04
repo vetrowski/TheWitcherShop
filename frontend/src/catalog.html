@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('html/_head.htm',{
+"title":"Каталог"
+})
+
+<body>
+  <div class="wrapper">
+    @@include('html/_header_catalog.htm',{})
+    <main class="page page_inner">
+      <div class="page__header">
+        <div class="page__container">
+          <h1 class="page__title title">Клинки и ножи</h1>
+          <nav class="page__breadcrumbs breadcrumbs">
+            <ul class="breadcrumbs__list">
+              <li class="breadcrumbs__item">
+                <a href="home.html" class="breadcrumbs__link">Главная</a>
+              </li>
+              <li class="breadcrumbs__item">
+                <span href="product.html" class="breadcrumbs__current">Клинки и ножи</span>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="catalog">
+        <div class="catalog__container">
+          <div class="catalog__body">
+            <div class="catalog__filter filter-catalog">
+              <button type="button" class="filter-catalog__title">Фильтр товаров</button>
+              <div data-spollers class="filter-catalog__items">
+                <div class="filter-catalog__price price-filter">
+                  <button type="button" data-spoller class="price-filter__title _icon-spoller-arrow">Цена</button>
+                  <div data-range class="price-filter__body">
+                    <div class="price-filter__inpunts">
+                      <input data-range-from="0" autocomplete="off" type="text" value="3500" name="form[]" class="price-filter__input">
+                      <input data-range-to="75000" autocomplete="off" type="text" value="75000" name="form[]" class="price-filter__input">
+                    </div>
+                    <div data-range-item class="price-filter__range"></div>
+                  </div>
+                </div>
+                <div class="filter-catalog__item item-filter-catalog">
+                  <button type="button" data-spoller class="item-filter-catalog__title _icon-spoller-arrow">Производство</button>
+                  <div class="item-filter-catalog__body">
+                    <div class="item-filter-catalog__checkbox checkbox">
+                      <input id="c_1" data-error="Ошибка" class="checkbox__input" type="checkbox" value="1" name="form[]">
+                      <label for="c_1" class="checkbox__label"><span class="checkbox__text">Slmogu <small>(5)</small></span></label>
+                    </div>
+                    <div class="item-filter-catalog__checkbox checkbox">
+                      <input id="c_2" data-error="Ошибка" class="checkbox__input" type="checkbox" value="1" name="form[]">
+                      <label for="c_2" class="checkbox__label"><span class="checkbox__text">Bsmith <small>(25)</small></span></label>
+                    </div>
+                    <div class="item-filter-catalog__checkbox checkbox">
+                      <input id="c_3" data-error="Ошибка" class="checkbox__input" type="checkbox" value="1" name="form[]">
+                      <label for="c_3" class="checkbox__label"><span class="checkbox__text">Булат Ивана Андреева <small>(6)</small></span></label>
+                    </div>
+                    <div class="item-filter-catalog__checkbox checkbox">
+                      <input id="c_3" data-error="Ошибка" class="checkbox__input" type="checkbox" value="1" name="form[]">
+                      <label for="c_3" class="checkbox__label"><span class="checkbox__text">Мастерская Ётуна <small>(4)</small></span></label>
+                    </div>
+                    <div class="item-filter-catalog__checkbox checkbox">
+                      <input id="c_4" data-error="Ошибка" class="checkbox__input" type="checkbox" value="1" name="form[]">
+                      <label for="c_4" class="checkbox__label"><span class="checkbox__text">Кузница Кузнецова <small>(18)</small></span></label>
+                    </div>
+                    <div class="item-filter-catalog__checkbox checkbox">
+                      <input id="c_3" data-error="Ошибка" class="checkbox__input" type="checkbox" value="1" name="form[]">
+                      <label for="c_3" class="checkbox__label"><span class="checkbox__text">Мастерская Дмитрия Андреева <small>(1)</small></span></label>
+                    </div>
+                    <div class="item-filter-catalog__checkbox checkbox">
+                      <input id="c_4" data-error="Ошибка" class="checkbox__input" type="checkbox" value="1" name="form[]">
+                      <label for="c_4" class="checkbox__label"><span class="checkbox__text">Kaer Morhen forge <small>(8)</small></span></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="catalog__content">
+              <div class="catalog__control">
+                <select name="form[]" class="control">
+                  <option value="1" selected>По популярности</option>
+                  <option value="2">По цене</option>
+                  <option value="3">По отзывам</option>
+                  <option value="4">По рейтингу</option>
+                </select>
+              </div>
+              <div class="catalog__products">
+                <article class="product-card">
+                  <div class="product-card__sale">-50%</div>
+                  <a href="product.html" class="product-card__image">
+                    <span class="product-card__item-image-ibg product-card__item-image-ibg-contain">
+                      <img src="@img/product-card/steel_sword_wolf_school.jpg" alt="Картинка">
+                    </span>
+                  </a>
+                  <div class="product-card__body">
+                    <h4 class="product-card__title">
+                      <a href="product.html" class="product-card__link-title">Стальной меч Школы&nbsp;Волка</a>
+                    </h4>
+                    <div class="product-card__info info-product-card">
+                      <div class="info-product-card__size">1.4 кг</div>
+                      <div class="info-product-card__materials">Сталь</div>
+                    </div>
+                    <div class="product-card__rating rating rating_set">
+                      <div class="rating__body">
+                        <div class="rating__active"></div>
+                        <div class="rating__items">
+                          <input type="radio" class="rating__item" value="1" name="rating">
+                          <input type="radio" class="rating__item" value="2" name="rating">
+                          <input type="radio" class="rating__item" value="3" name="rating">
+                          <input type="radio" class="rating__item" value="4" name="rating">
+                          <input type="radio" class="rating__item" value="5" name="rating">
+                        </div>
+                      </div>
+                      <div class="rating__value">3.9</div>
+                      <div class="rating__info">5 отзывов</div>
+                    </div>
+                    <div class="product-card__footer">
+                      <div class="product-card__price">18 700 р.</div>
+                      <a href="product.html" class="product-card__compare _icon-compare"></a>
+                      <a href="product.html" class="product-card__favorite _icon-favorite"></a>
+                    </div>
+                    <button type="button" class="product-card__cart button"><span class="_icon-cart">В корзину</span></button>
+                  </div>
+                </article>
+                <article class="product-card">
+                  <a href="product.html" class="product-card__image">
+                    <span class="product-card__item-image-ibg product-card__item-image-ibg-contain">
+                      <img src="@img/product-card/von_Everec_sabre.jpg" alt="Картинка">
+                    </span>
+                  </a>
+                  <div class="product-card__body">
+                    <h4 class="product-card__title">
+                      <a href="product.html" class="product-card__link-title">Сабля семьи фон&nbsp;Эверек</a>
+                    </h4>
+                    <div class="product-card__info info-product-card">
+                      <div class="info-product-card__size">1.5 кг</div>
+                      <div class="info-product-card__materials">Сталь</div>
+                    </div>
+                    <div class="product-card__rating rating rating_set">
+                      <div class="rating__body">
+                        <div class="rating__active"></div>
+                        <div class="rating__items">
+                          <input type="radio" class="rating__item" value="1" name="rating">
+                          <input type="radio" class="rating__item" value="2" name="rating">
+                          <input type="radio" class="rating__item" value="3" name="rating">
+                          <input type="radio" class="rating__item" value="4" name="rating">
+                          <input type="radio" class="rating__item" value="5" name="rating">
+                        </div>
+                      </div>
+                      <div class="rating__value">4.4</div>
+                      <div class="rating__info">2 отзыва</div>
+                    </div>
+                    <div class="product-card__footer">
+                      <div class="product-card__price">38 900 р.</div>
+                      <a href="product.html" class="product-card__compare _icon-compare"></a>
+                      <a href="product.html" class="product-card__favorite _icon-favorite"></a>
+                    </div>
+                    <button type="button" class="product-card__cart button"><span class="_icon-cart">В корзину</span></button>
+                  </div>
+                </article>
+                <article class="product-card">
+                  <a href="product.html" class="product-card__image">
+                    <span class="product-card__item-image-ibg product-card__item-image-ibg-contain">
+                      <img src="@img/product-card/mastercrafted_feline_steel_sword.jpg" alt="Картинка">
+                    </span>
+                  </a>
+                  <div class="product-card__body">
+                    <h4 class="product-card__title">
+                      <a href="product.html" class="product-card__link-title">Мастерский стальной меч Школы&nbsp;Кота</a>
+                    </h4>
+                    <div class="product-card__info info-product-card">
+                      <div class="info-product-card__size">1.3 кг</div>
+                      <div class="info-product-card__materials">Сталь</div>
+                    </div>
+                    <div class="product-card__rating rating rating_set">
+                      <div class="rating__body">
+                        <div class="rating__active"></div>
+                        <div class="rating__items">
+                          <input type="radio" class="rating__item" value="1" name="rating">
+                          <input type="radio" class="rating__item" value="2" name="rating">
+                          <input type="radio" class="rating__item" value="3" name="rating">
+                          <input type="radio" class="rating__item" value="4" name="rating">
+                          <input type="radio" class="rating__item" value="5" name="rating">
+                        </div>
+                      </div>
+                      <div class="rating__value">4.5</div>
+                      <div class="rating__info">4 отзыва</div>
+                    </div>
+                    <div class="product-card__footer">
+                      <div class="product-card__price">45 000 р.</div>
+                      <a href="product.html" class="product-card__compare _icon-compare"></a>
+                      <a href="product.html" class="product-card__favorite _icon-favorite"></a>
+                    </div>
+                    <button type="button" class="product-card__cart button"><span class="_icon-cart">В корзину</span></button>
+                  </div>
+                </article>
+                <article class="product-card">
+                  <a href="product.html" class="product-card__image">
+                    <span class="product-card__item-image-ibg product-card__item-image-ibg-contain">
+                      <img src="@img/product-card/geralt_of_rivia_silver_sword.jpg" alt="Картинка">
+                    </span>
+                  </a>
+                  <div class="product-card__body">
+                    <h4 class="product-card__title">
+                      <a href="product.html" class="product-card__link-title">Серебряный меч Геральта&nbsp;из&nbsp;Ривии</a>
+                    </h4>
+                    <div class="product-card__info info-product-card">
+                      <div class="info-product-card__size">1.4 кг</div>
+                      <div class="info-product-card__materials">Серебро</div>
+                    </div>
+                    <div class="product-card__rating rating rating_set">
+                      <div class="rating__body">
+                        <div class="rating__active"></div>
+                        <div class="rating__items">
+                          <input type="radio" class="rating__item" value="1" name="rating">
+                          <input type="radio" class="rating__item" value="2" name="rating">
+                          <input type="radio" class="rating__item" value="3" name="rating">
+                          <input type="radio" class="rating__item" value="4" name="rating">
+                          <input type="radio" class="rating__item" value="5" name="rating">
+                        </div>
+                      </div>
+                      <div class="rating__value">4.6</div>
+                      <div class="rating__info">7 отзывов</div>
+                    </div>
+                    <div class="product-card__footer">
+                      <div class="product-card__price">58 500 р.</div>
+                      <a href="product.html" class="product-card__compare _icon-compare"></a>
+                      <a href="product.html" class="product-card__favorite _icon-favorite"></a>
+                    </div>
+                    <button type="button" class="product-card__cart button"><span class="_icon-cart">В корзину</span></button>
+                  </div>
+                </article>
+                <article class="product-card">
+                  <a href="product.html" class="product-card__image">
+                    <span class="product-card__item-image-ibg product-card__item-image-ibg-contain">
+                      <img src="@img/product-card/ursine_silver_sword.jpg" alt="Картинка">
+                    </span>
+                  </a>
+                  <div class="product-card__body">
+                    <h4 class="product-card__title">
+                      <a href="product.html" class="product-card__link-title">Серебряный меч Школы&nbsp;Медведя</a>
+                    </h4>
+                    <div class="product-card__info info-product-card">
+                      <div class="info-product-card__size">1.5 кг</div>
+                      <div class="info-product-card__materials">Серебро</div>
+                    </div>
+                    <div class="product-card__rating rating rating_set">
+                      <div class="rating__body">
+                        <div class="rating__active"></div>
+                        <div class="rating__items">
+                          <input type="radio" class="rating__item" value="1" name="rating">
+                          <input type="radio" class="rating__item" value="2" name="rating">
+                          <input type="radio" class="rating__item" value="3" name="rating">
+                          <input type="radio" class="rating__item" value="4" name="rating">
+                          <input type="radio" class="rating__item" value="5" name="rating">
+                        </div>
+                      </div>
+                      <div class="rating__value">3.3</div>
+                      <div class="rating__info">3 отзыва</div>
+                    </div>
+                    <div class="product-card__footer">
+                      <div class="product-card__price">49 900 р.</div>
+                      <a href="product.html" class="product-card__compare _icon-compare"></a>
+                      <a href="product.html" class="product-card__favorite _icon-favorite"></a>
+                    </div>
+                    <button type="button" class="product-card__cart button"><span class="_icon-cart">В корзину</span></button>
+                  </div>
+                </article>
+                <article class="product-card">
+                  <a href="product.html" class="product-card__image">
+                    <span class="product-card__item-image-ibg product-card__item-image-ibg-contain">
+                      <img src="@img/product-card/aerondight.jpg" alt="Картинка">
+                    </span>
+                  </a>
+                  <div class="product-card__body">
+                    <h4 class="product-card__title">
+                      <a href="product.html" class="product-card__link-title">Арондит</a>
+                    </h4>
+                    <div class="product-card__info info-product-card">
+                      <div class="info-product-card__size">1.4 кг</div>
+                      <div class="info-product-card__materials">Серебро</div>
+                    </div>
+                    <div class="product-card__rating rating rating_set">
+                      <div class="rating__body">
+                        <div class="rating__active"></div>
+                        <div class="rating__items">
+                          <input type="radio" class="rating__item" value="1" name="rating">
+                          <input type="radio" class="rating__item" value="2" name="rating">
+                          <input type="radio" class="rating__item" value="3" name="rating">
+                          <input type="radio" class="rating__item" value="4" name="rating">
+                          <input type="radio" class="rating__item" value="5" name="rating">
+                        </div>
+                      </div>
+                      <div class="rating__value">5.0</div>
+                      <div class="rating__info">9 отзывов</div>
+                    </div>
+                    <div class="product-card__footer">
+                      <div class="product-card__price">75 000 р.</div>
+                      <a href="product.html" class="product-card__compare _icon-compare"></a>
+                      <a href="product.html" class="product-card__favorite _icon-favorite"></a>
+                    </div>
+                    <button type="button" class="product-card__cart button"><span class="_icon-cart">В корзину</span></button>
+                  </div>
+                </article>
+                <article class="product-card">
+                  <div class="product-card__sale">-30%</div>
+                  <a href="product.html" class="product-card__image">
+                    <span class="product-card__item-image-ibg product-card__item-image-ibg-contain">
+                      <img src="@img/product-card/cutting_witcher_knife.jpg" alt="Картинка">
+                    </span>
+                  </a>
+                  <div class="product-card__body">
+                    <h4 class="product-card__title">
+                      <a href="product.html" class="product-card__link-title">Разделочный нож ведьмака</a>
+                    </h4>
+                    <div class="product-card__info info-product-card">
+                      <div class="info-product-card__size">400 г</div>
+                      <div class="info-product-card__materials">Сталь</div>
+                    </div>
+                    <div class="product-card__rating rating rating_set">
+                      <div class="rating__body">
+                        <div class="rating__active"></div>
+                        <div class="rating__items">
+                          <input type="radio" class="rating__item" value="1" name="rating">
+                          <input type="radio" class="rating__item" value="2" name="rating">
+                          <input type="radio" class="rating__item" value="3" name="rating">
+                          <input type="radio" class="rating__item" value="4" name="rating">
+                          <input type="radio" class="rating__item" value="5" name="rating">
+                        </div>
+                      </div>
+                      <div class="rating__value">4.2</div>
+                      <div class="rating__info">2 отзыва</div>
+                    </div>
+                    <div class="product-card__footer">
+                      <div class="product-card__price">13 000 р.</div>
+                      <a href="product.html" class="product-card__compare _icon-compare"></a>
+                      <a href="product.html" class="product-card__favorite _icon-favorite"></a>
+                    </div>
+                    <button type="button" class="product-card__cart button"><span class="_icon-cart">В корзину</span></button>
+                  </div>
+                </article>
+                <article class="product-card">
+                  <a href="product.html" class="product-card__image">
+                    <span class="product-card__item-image-ibg product-card__item-image-ibg-contain">
+                      <img src="@img/product-card/knife-dagger_varyag.jpg" alt="Картинка">
+                    </span>
+                  </a>
+                  <div class="product-card__body">
+                    <h4 class="product-card__title">
+                      <a href="product.html" class="product-card__link-title">Нож-кинжал «Варяг»</a>
+                    </h4>
+                    <div class="product-card__info info-product-card">
+                      <div class="info-product-card__size">350 г</div>
+                      <div class="info-product-card__materials">Сталь</div>
+                    </div>
+                    <div class="product-card__rating rating rating_set">
+                      <div class="rating__body">
+                        <div class="rating__active"></div>
+                        <div class="rating__items">
+                          <input type="radio" class="rating__item" value="1" name="rating">
+                          <input type="radio" class="rating__item" value="2" name="rating">
+                          <input type="radio" class="rating__item" value="3" name="rating">
+                          <input type="radio" class="rating__item" value="4" name="rating">
+                          <input type="radio" class="rating__item" value="5" name="rating">
+                        </div>
+                      </div>
+                      <div class="rating__value">4.2</div>
+                      <div class="rating__info">2 отзыва</div>
+                    </div>
+                    <div class="product-card__footer">
+                      <div class="product-card__price">12 500 р.</div>
+                      <a href="product.html" class="product-card__compare _icon-compare"></a>
+                      <a href="product.html" class="product-card__favorite _icon-favorite"></a>
+                    </div>
+                    <button type="button" class="product-card__cart button"><span class="_icon-cart">В корзину</span></button>
+                  </div>
+                </article>
+              </div>
+              <div class="catalog__footer">
+                <a href="product.html" class="catalog__more button button_border">Показать больше</a>
+                <div class="catalog__pagging pagging">
+                  <button type="button" class="pagging__arrow pagging__arrow_left _icon-arrow-buttom" disabled></button>
+                  <ul class="pagging__list">
+                    <li class="pagging__item">
+                      <a href="" class="pagging__link _active">1</a>
+                    </li>
+                    <li class="pagging__item">
+                      <a href="" class="pagging__link">2</a>
+                    </li>
+                    <li class="pagging__item">
+                      <a href="product.html" class="pagging__link">3</a>
+                    </li>
+                    <li class="pagging__item">
+                      <a href="product.html" class="pagging__link">...</a>
+                    </li>
+                    <li class="pagging__item">
+                      <a href="product.html" class="pagging__link">15</a>
+                    </li>
+                  </ul>
+                  <button type="button" class="pagging__arrow pagging__arrow_right _icon-arrow-buttom"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    @@include('html/_footer.htm',{})
+  </div>
+  @@include('html/_popup.htm',{})
+  @@include('html/_js.htm',{})
+</body>
+
+</html>

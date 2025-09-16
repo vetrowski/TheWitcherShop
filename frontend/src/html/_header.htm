@@ -4,10 +4,10 @@
 			<nav class="top-header__menu menu-top-header">
 				<ul data-da=".menu__body, 991.98" class="menu-top-header__list">
 					<li class="menu-top-header__item menu-top-header__item_catalog"><a href="" class="menu-top-header__link menu-top-header__link_catalog _icon-arrow-buttom">Каталог товаров</a></li>
-					<li class="menu-top-header__item"><a href="#about_us" class="menu-top-header__link">О нас</a></li>
-					<li class="menu-top-header__item"><a href="#about_us" class="menu-top-header__link">Оплата и доставка</a></li>
-					<li class="menu-top-header__item"><a href="#about_us" class="menu-top-header__link">Новости</a></li>
-					<li class="menu-top-header__item"><a href="#contacts" class="menu-top-header__link">Контакты</a></li>
+					<li class="menu-top-header__item"><a href="home.html" class="menu-top-header__link">О нас</a></li>
+					<li class="menu-top-header__item"><a href="home.html" class="menu-top-header__link">Оплата и доставка</a></li>
+					<li class="menu-top-header__item"><a href="home.html" class="menu-top-header__link">Новости</a></li>
+					<li class="menu-top-header__item"><a href="home.html" class="menu-top-header__link">Контакты</a></li>
 				</ul>
 			</nav>
 			<a href="#" class="top-header__user _icon-user"><span>Вступай в наши ряды!</span></a>
@@ -17,11 +17,13 @@
 			</nav>
 		</div>
 	</div>
+
+	<!-- Шапка брендинга (название, логотипы, оформление заказа, поисковая строка, заказ звонка) -->
 	<div class="header__body body-header">
 		<div class="body-header1__container">
-			<div class="logotypes"><figure><a href=""><img class="logo" src="img\header\logo1.png"></a></figure></div>
-			<div class="heading">The Witcher Shop</div>
-			<div class="logotypes1"><figure><a href=""><img class="logo1" src="img\header\logo2.png"></a></figure></div>
+			<div class="logo-left"><figure><a href="home.html"><img class="logo" src="img\header\logo1.png"></a></figure></div>
+			<a href="home.html"><div class="heading">The Witcher Shop</div></a>
+			<div class="logo-right"><figure><a href="home.html"><img class="logo1" src="img\header\logo2.png"></a></figure></div>
 		</div>
 		<div class="body-header__container">
 				<a href="" data-da=".top-header__container, 991.98, 2" class="actions-header__cart cart-header">
@@ -31,7 +33,7 @@
 						<div href="" class="cart-header__link">Оформить заказ</div>
 					</div>
 				</a>
-			<div data-da=".catalog-header__container, 479.98" class="body-header__search">
+			<div class="body-header__search">
 				<form action="#" class="search-header">
 					<button type="submit" class="search-header__button _icon-search"></button>
 					<input autocomplete="off" type="text" name="form[]" data-error="Ошибка" placeholder="Поиск" class="search-header__input">
@@ -56,34 +58,38 @@
 			</div>
 		</div>
 	</div>
-	<div class="three-cards__container-cards">
-		<div class="cards-img">
-			<div>
-				<a class="cards-link" href="#main_catalog">
-				<picture class="picture-cards">
-					<img class="cards-image-style z-index: 3;" src="img\header\gwent1.jpg">
-					<div class="cards-text">Книги</div>
-				</picture>
-				</a>
-			</div>
-			<div>
-				<a class="cards-link" href="#main_catalog">
-				<picture class="picture-cards">
-					<img class="cards-image-style z-index: 2;" src="img\header\gaunter.jpg">
-					<div class="cards-text">Аксессуары</div>
-				</picture>
-				</a>
-			</div>
-			<div>
-				<a class="cards-link" href="#main_catalog">
-				<picture class="picture-cards">
-					<img class="cards-image-style z-index: 1;" src="img\header\gwent2.jpg">
-					<div class="cards-text">Мерч</div>
-				</picture>
-				</a>
+
+
+	<div class="page__three-cards three-cards">
+		<div class="three-cards__container">
+			<div class="three-cards__items">
+				<div class="three-cards__item item-card">
+					<a href="#main_catalog" class="item-card__image-ibg">
+						<img src="img\header\card1.jpg" alt="Картинка">
+					</a>
+					<div class="item-card__text">
+						<h4 class="item-card__title">Книги</h4>
+					</div>
+				</div>
+				<div class="three-cards__item item-card">
+					<a href="#main_catalog" class="item-card__image-ibg">
+						<img src="img\header\card2.jpg" alt="Картинка">
+					</a>
+					<div class="item-card__text">
+						<h4 class="item-card__title">Аксессуары</h4>
+					</div>
+				</div>
+				<div class="three-cards__item item-card">
+					<a href="#main_catalog" class="item-card__image-ibg">
+						<img src="img\header\card3.jpg" alt="Картинка">
+					</a>
+					<div class="item-card__text">
+						<h4 class="item-card__title">Мерч</h4>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
+	</div>	
 	<div class="header__catalog catalog-header">
 		<div class="catalog-header__container">
 			<nav class="catalog-header__menu menu-catalog">

@@ -14,7 +14,7 @@ public class PersonValidator implements Validator {
         this.personService = personService;
     }
 
-    // В данном методе указываем, для какой модели предназначен данный валидатор
+    // В данном методе указываем, для какой модели предназначен этот валидатор
     @Override
     public boolean supports(Class<?> clazz) {
         return Person.class.equals(clazz);

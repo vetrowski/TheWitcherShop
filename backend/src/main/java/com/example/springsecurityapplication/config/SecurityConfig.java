@@ -50,12 +50,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception{
         // Отключаем csrf защиту от межсайтовой подделки запросов
         http
-                // Указываем, что все страницы должны быть защищены аутентификацией
-                .authorizeRequests()
+            // Указываем, что все страницы должны быть защищены аутентификацией
+            .authorizeRequests()
                 // Указываем, что /admin доступен пользователю с ролью администратор
-//                .antMatchers("/admin").hasAnyRole("ADMIN")
+                // .antMatchers("/admin").hasAnyRole("ADMIN")
                 // Указываем, что неаутентифицированные пользователи могут заходить на страницу с формой аутентификации и на объект ошибки. С помощью permitAll указываем, что данные страницы по умолчанию доступны всем пользователям
-                .antMatchers("/authentication/login", "/error", "/authentication/registration", "/product", "/catalog", "/product/info/{id}", "/img/**", "/product/search", "/user", "/home", "/catalog", "/authentication/change").permitAll()
+                .antMatchers("/", "/home", "/authentication/login", "/error", "/authentication/registration", "/product", "/catalog", "/product/info/{id}", "/img/**", "/product/search", "/user", "/catalog", "/authentication/change").permitAll()
+                .antMatchers("/order/**").authenticated()
                 // Указываем, что все остальные страницы доступны пользователю с ролями user и admin
                 .anyRequest().hasAnyRole("USER", "ADMIN", "SELLER")
                 /*// Указываем, что для всех остальных страниц необходимо вызывать метод authenticated, который открывает форму аутентификации
@@ -66,7 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                  .formLogin().loginPage("/authentication/login")
                 // Указываем, на какой URL-адрес будут отправляться данные с формы. Нам уже не нужно будет создавать метод в контроллере и обрабатывать данные с формы. Мы задали URL по умолчанию, который позволяет обрабатывать форму аутентификации в Spring Security. Spring Security будет ждать логин и пароль с формы, а затем сверять их с данными в БД
                 .loginProcessingUrl("/process_login")
-                // Указываем, на какой URL необходимо отправить пользователя после успешной аутентификациии. Вторым аргументом ставим true, чтобы перенаправление на данную страницу шло в любом случае при успешной аутентификации
+                // Указываем, на какой URL необходимо отправить пользователям после успешной аутентификациии. Вторым аргументом ставим true, чтобы перенаправление на данную страницу шло в любом случае при успешной аутентификации
                 .defaultSuccessUrl("/home", true)
                 // Указываем, куда необходимо перенаправить пользователя при неуспешной аутентификации
                 // В URL будет передан объект. Данный объект мы будем проверять на форме, и если он существует, будет выведено сообщение: "Неправильный логин или пароль"

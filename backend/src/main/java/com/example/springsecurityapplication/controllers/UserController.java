@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+
 @Controller
 public class UserController {
     private final OrderRepository orderRepository;
@@ -34,16 +35,26 @@ public class UserController {
         this.productService = productService;
     }
 
+    @GetMapping({"/", "/home"})
+    public String home(Model model) {
+        model.addAttribute("products", productService.getAllProduct());
+        return "home";
+    }
+
+
+
+
+/*
     @GetMapping("/home")
     public String index(Model model){
         // Получаем объект аутентификации -> с помощью SecurityContextHolder обращаемся к контексту и на нем вызываем метод аутентификации. По сути из потока для текущего пользователя мы получаем объект, который был положен в сессию поле аутентификации пользователя
-        /*Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        *//*Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         // Преобразовываем объект аутентификации в специальный объект класса по работе с пользователями
         PersonDetails personDetails = (PersonDetails) authentication.getPrincipal();
         System.out.println("ID пользователя: " + personDetails.getPerson().getId());
         System.out.println("Логин пользователя: " + personDetails.getPerson().getLogin());
-        System.out.println("Пароль пользователя: " + personDetails.getPerson().getPassword());*/
+        System.out.println("Пароль пользователя: " + personDetails.getPerson().getPassword());*//*
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -57,10 +68,14 @@ public class UserController {
         else if (role.equals("ROLE_SELLER")){
             return "redirect:/seller";
         }
+        else if (role.equals("ROLE_USER")){
+            return "redirect:/product/home";
+        }
 
         model.addAttribute("products", productService.getAllProduct());
         return "user/home";
     }
+    */
 
     // Добавить товар в корзину
     @GetMapping("/cart/add/{id}")

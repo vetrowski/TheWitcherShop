@@ -23,6 +23,7 @@ public class AuthenticationController {
 
     private final PersonService personService;
 
+    // Валидатор для проверки пользователя на уникальность
     @Autowired
     public AuthenticationController(PersonValidator personValidator, PersonService personService) {
         this.personValidator = personValidator;
@@ -47,7 +48,7 @@ public class AuthenticationController {
             return "registration";
         }
         personService.register(person);
-        return "redirect:/login";
+        return "redirect:/authentication/login";
     }
 
     @GetMapping("/change")

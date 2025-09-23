@@ -41,9 +41,6 @@ public class UserController {
         return "home";
     }
 
-
-
-
 /*
     @GetMapping("/home")
     public String index(Model model){

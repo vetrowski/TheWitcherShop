@@ -17,6 +17,7 @@ global.app = {
 };
 
 // Импорт задач
+import { backendStatic, backendTemplates } from "./config/gulp-tasks/backend.js";
 import { reset } from "./config/gulp-tasks/reset.js";
 import { html } from "./config/gulp-tasks/html.js";
 import { css } from "./config/gulp-tasks/css.js";
@@ -35,6 +36,7 @@ const fonts = gulp.series(reset, otfToTtf, ttfToWoff, fonstStyle);
 const devTasks = gulp.parallel(fonts, sprite, gitignore);
 // Основные задачи будем выполнять параллельно после обработки шрифтов
 const buildTasks = gulp.series(fonts, js, gulp.parallel(html, css, images, sprite, gitignore), jsp);
+const backendTasks = gulp.series(buildTasks, gulp.parallel(backendStatic, backendTemplates))
 
 // Экспорт задач
 export { html };
@@ -51,12 +53,14 @@ const development = gulp.series(devTasks);
 const build = gulp.series(buildTasks);
 const deployFTP = gulp.series(buildTasks, ftp);
 const deployZIP = gulp.series(buildTasks, zip);
+const backend = gulp.series(backendTasks);
 
 // Экспорт сценариев
 export { development };
 export { build };
 export { deployFTP };
 export { deployZIP };
+export { backend };
 
 // Выполнение сценария по умолчанию
 gulp.task('default', development);

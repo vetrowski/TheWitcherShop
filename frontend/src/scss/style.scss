@@ -14,6 +14,15 @@
 // Подключить если есть файл иконочного шрифта
 @import "fonts/icons";
 
+// Флаг true - скрывать элементы с атрибутом data-thymeleaf
+// Флаг false - не скрывать такие элементы
+$isDev: true;
+@if $isDev {
+    [data-thymeleaf] {
+        display: none !important;
+    }
+}
+
 // Шрифт по умолчанию ================================================================================
 $fontFamily: "Montserrat";
 $fontSize: rem(18); // где 14(px) - размер шрифта по умолчанию из макета
@@ -141,7 +150,6 @@ body {
 @import "home";
 @import "catalog";
 @import "product";
-
 
 .page {
 	// .page_home

@@ -15,7 +15,8 @@
 		"deploy": "gulp deployFTP --build",
 		"zip": "gulp deployZIP --build",
 		"devbuild": "gulp build --build --nowebp",
-		"tmp": "gulp -f gulpfile.tmp.js"
+		"tmp": "gulp -f gulpfile.tmp.js",
+		"backend": "gulp backend --build"
 	},
 	"devDependencies": {
 		"copy-webpack-plugin": "latest",

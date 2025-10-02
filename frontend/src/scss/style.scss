@@ -16,8 +16,8 @@
 
 // Флаг true - скрывать элементы с атрибутом data-thymeleaf
 // Флаг false - не скрывать такие элементы
-$isDev: true;
-@if $isDev {
+$thymeleaf: true;
+@if $thymeleaf {
     [data-thymeleaf] {
         display: none !important;
     }

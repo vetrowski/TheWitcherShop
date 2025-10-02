@@ -64,9 +64,3 @@ export { backend };
 
 // Выполнение сценария по умолчанию
 gulp.task('default', development);
-
-
-
-
-
-

@@ -2586,7 +2586,7 @@
       S = Math.round;
     function x() {
       var e = navigator.userAgentData;
-      return null != e && e.brands
+      return null != e && e.brands && Array.isArray(e.brands)
         ? e.brands
             .map(function (e) {
               return e.brand + "/" + e.version;
@@ -2850,18 +2850,20 @@
                     : [],
                   popper: I(t),
                 });
-              var a = (function (e) {
-                var t = Q(e);
-                return K.reduce(function (e, s) {
-                  return e.concat(
-                    t.filter(function (e) {
-                      return e.phase === s;
-                    })
-                  );
-                }, []);
-              })(
-                (function (e) {
-                  var t = e.reduce(function (e, t) {
+              var a,
+                c,
+                p = (function (e) {
+                  var t = Q(e);
+                  return K.reduce(function (e, s) {
+                    return e.concat(
+                      t.filter(function (e) {
+                        return e.phase === s;
+                      })
+                    );
+                  }, []);
+                })(
+                  ((a = [].concat(n, o.options.modifiers)),
+                  (c = a.reduce(function (e, t) {
                     var s = e[t.name];
                     return (
                       (e[t.name] = s
@@ -2872,14 +2874,13 @@
                         : t),
                       e
                     );
-                  }, {});
-                  return Object.keys(t).map(function (e) {
-                    return t[e];
-                  });
-                })([].concat(n, o.options.modifiers))
-              );
+                  }, {})),
+                  Object.keys(c).map(function (e) {
+                    return c[e];
+                  }))
+                );
               return (
-                (o.orderedModifiers = a.filter(function (e) {
+                (o.orderedModifiers = p.filter(function (e) {
                   return e.enabled;
                 })),
                 o.orderedModifiers.forEach(function (e) {
@@ -3098,12 +3099,12 @@
         k = Object.assign({ position: o }, c && le),
         M =
           !0 === d
-            ? (function (e) {
-                var t = e.x,
-                  s = e.y,
-                  n = window.devicePixelRatio || 1;
-                return { x: S(t * n) / n || 0, y: S(s * n) / n || 0 };
-              })({ x: f, y: g })
+            ? (function (e, t) {
+                var s = e.x,
+                  n = e.y,
+                  i = t.devicePixelRatio || 1;
+                return { x: S(s * i) / i || 0, y: S(n * i) / i || 0 };
+              })({ x: f, y: g }, m(s))
             : { x: f, y: g };
       return (
         (f = M.x),
@@ -4250,10 +4251,8 @@
             (y.state.isVisible = !0), L() && (S.style.visibility = "visible");
             $(), j(), y.state.isMounted || (S.style.transition = "none");
             if (L()) {
-              var r = k(),
-                a = r.box,
-                l = r.content;
-              Ye([a, l], 0);
+              var r = k();
+              Ye([r.box, r.content], 0);
             }
             (o = function () {
               var e;
@@ -5449,42 +5448,40 @@
         "Object" === Object.prototype.toString.call(e).slice(8, -1)
       );
     }
-    function jt(...e) {
+    function jt(e) {
+      return "undefined" != typeof window && void 0 !== window.HTMLElement
+        ? e instanceof HTMLElement
+        : e && (1 === e.nodeType || 11 === e.nodeType);
+    }
+    function zt(...e) {
       const t = Object(e[0]),
         s = ["__proto__", "constructor", "prototype"];
-      for (let i = 1; i < e.length; i += 1) {
-        const r = e[i];
-        if (
-          null != r &&
-          ((n = r),
-          !("undefined" != typeof window && void 0 !== window.HTMLElement
-            ? n instanceof HTMLElement
-            : n && (1 === n.nodeType || 11 === n.nodeType)))
-        ) {
-          const e = Object.keys(Object(r)).filter((e) => s.indexOf(e) < 0);
+      for (let n = 1; n < e.length; n += 1) {
+        const i = e[n];
+        if (null != i && !jt(i)) {
+          const e = Object.keys(Object(i)).filter((e) => s.indexOf(e) < 0);
           for (let s = 0, n = e.length; s < n; s += 1) {
             const n = e[s],
-              i = Object.getOwnPropertyDescriptor(r, n);
-            void 0 !== i &&
-              i.enumerable &&
-              (Bt(t[n]) && Bt(r[n])
-                ? r[n].__swiper__
-                  ? (t[n] = r[n])
-                  : jt(t[n], r[n])
-                : !Bt(t[n]) && Bt(r[n])
+              r = Object.getOwnPropertyDescriptor(i, n);
+            void 0 !== r &&
+              r.enumerable &&
+              (Bt(t[n]) && Bt(i[n])
+                ? i[n].__swiper__
+                  ? (t[n] = i[n])
+                  : zt(t[n], i[n])
+                : !Bt(t[n]) && Bt(i[n])
                 ? ((t[n] = {}),
-                  r[n].__swiper__ ? (t[n] = r[n]) : jt(t[n], r[n]))
-                : (t[n] = r[n]));
+                  i[n].__swiper__ ? (t[n] = i[n]) : zt(t[n], i[n]))
+                : (t[n] = i[n]));
           }
         }
       }
-      var n;
       return t;
     }
-    function zt(e, t, s) {
+    function Ht(e, t, s) {
       e.style.setProperty(t, s);
     }
-    function Ht({ swiper: e, targetPosition: t, side: s }) {
+    function Wt({ swiper: e, targetPosition: t, side: s }) {
       const n = Lt(),
         i = -e.translate;
       let r,
@@ -5513,11 +5510,11 @@
         };
       d();
     }
-    let Wt, Ft, Gt;
-    function Rt() {
+    let Ft, Gt, Rt;
+    function Ut() {
       return (
-        Wt ||
-          (Wt = (function () {
+        Ft ||
+          (Ft = (function () {
             const e = Lt(),
               t = Tt();
             return {
@@ -5543,14 +5540,14 @@
               gestures: "ongesturestart" in e,
             };
           })()),
-        Wt
+        Ft
       );
     }
-    function Ut(e = {}) {
+    function Xt(e = {}) {
       return (
-        Ft ||
-          (Ft = (function ({ userAgent: e } = {}) {
-            const t = Rt(),
+        Gt ||
+          (Gt = (function ({ userAgent: e } = {}) {
+            const t = Ut(),
               s = Lt(),
               n = s.navigator.platform,
               i = e || s.navigator.userAgent,
@@ -5589,13 +5586,13 @@
               r
             );
           })(e)),
-        Ft
+        Gt
       );
     }
-    function Xt() {
+    function Yt() {
       return (
-        Gt ||
-          (Gt = (function () {
+        Rt ||
+          (Rt = (function () {
             const e = Lt();
             return {
               isSafari: (function () {
@@ -5611,10 +5608,10 @@
               ),
             };
           })()),
-        Gt
+        Rt
       );
     }
-    const Yt = {
+    const Zt = {
       on(e, t, s) {
         const n = this;
         if (!n.eventsListeners || n.destroyed) return n;
@@ -5698,7 +5695,7 @@
         );
       },
     };
-    const Zt = {
+    const Kt = {
       updateSize: function () {
         const e = this;
         let t, s;
@@ -5777,8 +5774,8 @@
             : d.css({ marginRight: "", marginBottom: "", marginTop: "" }),
           n.centeredSlides &&
             n.cssMode &&
-            (zt(e.wrapperEl, "--swiper-centered-offset-before", ""),
-            zt(e.wrapperEl, "--swiper-centered-offset-after", ""));
+            (Ht(e.wrapperEl, "--swiper-centered-offset-before", ""),
+            Ht(e.wrapperEl, "--swiper-centered-offset-after", ""));
         const C = n.grid && n.grid.rows > 1 && e.grid;
         let E;
         C && e.grid.initSlides(u);
@@ -5833,11 +5830,11 @@
                   0 === i && (w = w - r / 2 - y),
                   Math.abs(w) < 0.001 && (w = 0),
                   n.roundLengths && (w = Math.floor(w)),
-                  x % n.slidesPerGroup == 0 && p.push(w),
+                  x % n.slidesPerGroup === 0 && p.push(w),
                   f.push(w))
                 : (n.roundLengths && (w = Math.floor(w)),
                   (x - Math.min(e.params.slidesPerGroupSkip, x)) %
-                    e.params.slidesPerGroup ==
+                    e.params.slidesPerGroup ===
                     0 && p.push(w),
                   f.push(w),
                   (w = w + E + y)),
@@ -5909,8 +5906,8 @@
           }),
           n.centeredSlides && n.cssMode && !n.centeredSlidesBounds)
         ) {
-          zt(e.wrapperEl, "--swiper-centered-offset-before", -p[0] + "px"),
-            zt(
+          Ht(e.wrapperEl, "--swiper-centered-offset-before", -p[0] + "px"),
+            Ht(
               e.wrapperEl,
               "--swiper-centered-offset-after",
               e.size / 2 - h[h.length - 1] / 2 + "px"
@@ -6190,7 +6187,7 @@
             t.slideToClickedSlide();
       },
     };
-    const Kt = {
+    const Qt = {
       getTranslate: function (e = this.isHorizontal() ? "x" : "y") {
         const {
           params: t,
@@ -6252,7 +6249,7 @@
           else {
             if (!r.support.smoothScroll)
               return (
-                Ht({ swiper: r, targetPosition: -d, side: e ? "left" : "top" }),
+                Wt({ swiper: r, targetPosition: -d, side: e ? "left" : "top" }),
                 !0
               );
             o.scrollTo({ [e ? "left" : "top"]: -d, behavior: "smooth" });
@@ -6302,7 +6299,7 @@
         );
       },
     };
-    function Qt({ swiper: e, runCallbacks: t, direction: s, step: n }) {
+    function Jt({ swiper: e, runCallbacks: t, direction: s, step: n }) {
       const { activeIndex: i, previousIndex: r } = e;
       let a = s;
       if (
@@ -6317,7 +6314,7 @@
             : e.emit(`slidePrevTransition${n}`);
       }
     }
-    const Jt = {
+    const es = {
       slideTo: function (e = 0, t = this.params.speed, s = !0, n, i) {
         if ("number" != typeof e && "string" != typeof e)
           throw new Error(
@@ -6407,7 +6404,7 @@
           } else {
             if (!r.support.smoothScroll)
               return (
-                Ht({ swiper: r, targetPosition: s, side: e ? "left" : "top" }),
+                Wt({ swiper: r, targetPosition: s, side: e ? "left" : "top" }),
                 !0
               );
             f.scrollTo({ [e ? "left" : "top"]: s, behavior: "smooth" });
@@ -6598,7 +6595,7 @@
         } else e.slideTo(r);
       },
     };
-    const es = {
+    const ts = {
       loopCreate: function () {
         const e = this,
           t = Tt(),
@@ -6680,7 +6677,7 @@
           s.removeAttr("data-swiper-slide-index");
       },
     };
-    function ts(e) {
+    function ss(e) {
       const t = this,
         s = Tt(),
         n = Lt(),
@@ -6772,7 +6769,7 @@
         t.freeMode.onTouchStart(),
         t.emit("touchStart", l);
     }
-    function ss(e) {
+    function ns(e) {
       const t = Tt(),
         s = this,
         n = s.touchEventsData,
@@ -6936,7 +6933,7 @@
         s.updateProgress(n.currentTranslate),
         s.setTranslate(n.currentTranslate));
     }
-    function ns(e) {
+    function is(e) {
       const t = this,
         s = t.touchEventsData,
         {
@@ -7047,7 +7044,7 @@
             "prev" === t.swipeDirection && t.slideTo(null !== m ? m : p));
       }
     }
-    function is() {
+    function rs() {
       const e = this,
         { params: t, el: s } = e;
       if (s && 0 === s.offsetWidth) return;
@@ -7072,7 +7069,7 @@
         (e.allowSlideNext = n),
         e.params.watchOverflow && r !== e.snapGrid && e.checkOverflow();
     }
-    function rs(e) {
+    function as(e) {
       const t = this;
       t.enabled &&
         (t.allowClick ||
@@ -7081,7 +7078,7 @@
             t.animating &&
             (e.stopPropagation(), e.stopImmediatePropagation())));
     }
-    function as() {
+    function os() {
       const e = this,
         { wrapperEl: t, rtlTranslate: s, enabled: n } = e;
       if (!n) return;
@@ -7098,9 +7095,9 @@
         i !== e.progress && e.updateProgress(s ? -e.translate : e.translate),
         e.emit("setTranslate", e.translate, !1);
     }
-    let os = !1;
-    function ls() {}
-    const cs = (e, t) => {
+    let ls = !1;
+    function cs() {}
+    const ds = (e, t) => {
       const s = Tt(),
         {
           params: n,
@@ -7139,30 +7136,30 @@
               o.ios || o.android
                 ? "resize orientationchange observerUpdate"
                 : "resize observerUpdate",
-              is,
+              rs,
               !0
             )
-          : e[u]("observerUpdate", is, !0);
+          : e[u]("observerUpdate", rs, !0);
     };
-    const ds = {
+    const us = {
         attachEvents: function () {
           const e = this,
             t = Tt(),
             { params: s, support: n } = e;
-          (e.onTouchStart = ts.bind(e)),
-            (e.onTouchMove = ss.bind(e)),
-            (e.onTouchEnd = ns.bind(e)),
-            s.cssMode && (e.onScroll = as.bind(e)),
-            (e.onClick = rs.bind(e)),
-            n.touch && !os && (t.addEventListener("touchstart", ls), (os = !0)),
-            cs(e, "on");
+          (e.onTouchStart = ss.bind(e)),
+            (e.onTouchMove = ns.bind(e)),
+            (e.onTouchEnd = is.bind(e)),
+            s.cssMode && (e.onScroll = os.bind(e)),
+            (e.onClick = as.bind(e)),
+            n.touch && !ls && (t.addEventListener("touchstart", cs), (ls = !0)),
+            ds(e, "on");
         },
         detachEvents: function () {
-          cs(this, "off");
+          ds(this, "off");
         },
       },
-      us = (e, t) => e.grid && t.grid && t.grid.rows > 1;
-    const ps = {
+      ps = (e, t) => e.grid && t.grid && t.grid.rows > 1;
+    const fs = {
       setBreakpoint: function () {
         const e = this,
           {
@@ -7177,8 +7174,8 @@
         const o = e.getBreakpoint(a, e.params.breakpointsBase, e.el);
         if (!o || e.currentBreakpoint === o) return;
         const l = (o in a ? a[o] : void 0) || e.originalParams,
-          c = us(e, i),
-          d = us(e, l),
+          c = ps(e, i),
+          d = ps(e, l),
           u = i.enabled;
         c && !d
           ? (r.removeClass(
@@ -7199,7 +7196,7 @@
           });
         const p = l.direction && l.direction !== i.direction,
           f = i.loop && (l.slidesPerView !== i.slidesPerView || p);
-        p && s && e.changeDirection(), jt(e.params, l);
+        p && s && e.changeDirection(), zt(e.params, l);
         const h = e.params.enabled;
         Object.assign(e, {
           allowTouchMove: e.params.allowTouchMove,
@@ -7239,7 +7236,7 @@
         return n || "max";
       },
     };
-    const fs = {
+    const hs = {
       addClasses: function () {
         const e = this,
           {
@@ -7290,7 +7287,7 @@
         e.removeClass(t.join(" ")), this.emitContainerClasses();
       },
     };
-    const hs = {
+    const ms = {
       init: !0,
       direction: "horizontal",
       touchEventsTarget: "wrapper",
@@ -7384,7 +7381,7 @@
       runCallbacksOnInit: !0,
       _emitClasses: !1,
     };
-    function ms(e, t) {
+    function gs(e, t) {
       return function (s = {}) {
         const n = Object.keys(s)[0],
           i = s[n];
@@ -7398,15 +7395,15 @@
                   "enabled" in e[n] ||
                   (e[n].enabled = !0),
                 e[n] || (e[n] = { enabled: !1 }),
-                jt(t, s))
-              : jt(t, s))
-          : jt(t, s);
+                zt(t, s))
+              : zt(t, s))
+          : zt(t, s);
       };
     }
-    const gs = {
-        eventsEmitter: Yt,
-        update: Zt,
-        translate: Kt,
+    const vs = {
+        eventsEmitter: Zt,
+        update: Kt,
+        translate: Qt,
         transition: {
           setTransition: function (e, t) {
             const s = this;
@@ -7418,7 +7415,7 @@
               { params: n } = s;
             n.cssMode ||
               (n.autoHeight && s.updateAutoHeight(),
-              Qt({ swiper: s, runCallbacks: e, direction: t, step: "Start" }));
+              Jt({ swiper: s, runCallbacks: e, direction: t, step: "Start" }));
           },
           transitionEnd: function (e = !0, t) {
             const s = this,
@@ -7426,11 +7423,11 @@
             (s.animating = !1),
               n.cssMode ||
                 (s.setTransition(0),
-                Qt({ swiper: s, runCallbacks: e, direction: t, step: "End" }));
+                Jt({ swiper: s, runCallbacks: e, direction: t, step: "End" }));
           },
         },
-        slide: Jt,
-        loop: es,
+        slide: es,
+        loop: ts,
         grabCursor: {
           setGrabCursor: function (e) {
             const t = this;
@@ -7456,8 +7453,8 @@
               ].style.cursor = "");
           },
         },
-        events: ds,
-        breakpoints: ps,
+        events: us,
+        breakpoints: fs,
         checkOverflow: {
           checkOverflow: function () {
             const e = this,
@@ -7474,7 +7471,7 @@
               t !== e.isLocked && e.emit(e.isLocked ? "lock" : "unlock");
           },
         },
-        classes: fs,
+        classes: hs,
         images: {
           loadImage: function (e, t, s, n, i, r) {
             const a = Lt();
@@ -7519,8 +7516,8 @@
           },
         },
       },
-      vs = {};
-    class bs {
+      bs = {};
+    class ys {
       constructor(...e) {
         let t, s;
         if (
@@ -7530,24 +7527,24 @@
             ? (s = e[0])
             : ([t, s] = e),
           s || (s = {}),
-          (s = jt({}, s)),
+          (s = zt({}, s)),
           t && !s.el && (s.el = t),
           s.el && It(s.el).length > 1)
         ) {
           const e = [];
           return (
             It(s.el).each((t) => {
-              const n = jt({}, s, { el: t });
-              e.push(new bs(n));
+              const n = zt({}, s, { el: t });
+              e.push(new ys(n));
             }),
             e
           );
         }
         const n = this;
         (n.__swiper__ = !0),
-          (n.support = Rt()),
-          (n.device = Ut({ userAgent: s.userAgent })),
-          (n.browser = Xt()),
+          (n.support = Ut()),
+          (n.device = Xt({ userAgent: s.userAgent })),
+          (n.browser = Yt()),
           (n.eventsListeners = {}),
           (n.eventsAnyListeners = []),
           (n.modules = [...n.__modules__]),
@@ -7556,18 +7553,18 @@
         n.modules.forEach((e) => {
           e({
             swiper: n,
-            extendParams: ms(s, i),
+            extendParams: gs(s, i),
             on: n.on.bind(n),
             once: n.once.bind(n),
             off: n.off.bind(n),
             emit: n.emit.bind(n),
           });
         });
-        const r = jt({}, hs, i);
+        const r = zt({}, ms, i);
         return (
-          (n.params = jt({}, r, vs, s)),
-          (n.originalParams = jt({}, n.params)),
-          (n.passedParams = jt({}, s)),
+          (n.params = zt({}, r, bs, s)),
+          (n.originalParams = zt({}, n.params)),
+          (n.passedParams = zt({}, s)),
           n.params &&
             n.params.on &&
             Object.keys(n.params.on).forEach((e) => {
@@ -7921,31 +7918,31 @@
         );
       }
       static extendDefaults(e) {
-        jt(vs, e);
+        zt(bs, e);
       }
       static get extendedDefaults() {
-        return vs;
+        return bs;
       }
       static get defaults() {
-        return hs;
+        return ms;
       }
       static installModule(e) {
-        bs.prototype.__modules__ || (bs.prototype.__modules__ = []);
-        const t = bs.prototype.__modules__;
+        ys.prototype.__modules__ || (ys.prototype.__modules__ = []);
+        const t = ys.prototype.__modules__;
         "function" == typeof e && t.indexOf(e) < 0 && t.push(e);
       }
       static use(e) {
         return Array.isArray(e)
-          ? (e.forEach((e) => bs.installModule(e)), bs)
-          : (bs.installModule(e), bs);
+          ? (e.forEach((e) => ys.installModule(e)), ys)
+          : (ys.installModule(e), ys);
       }
     }
-    Object.keys(gs).forEach((e) => {
-      Object.keys(gs[e]).forEach((t) => {
-        bs.prototype[t] = gs[e][t];
+    Object.keys(vs).forEach((e) => {
+      Object.keys(vs[e]).forEach((t) => {
+        ys.prototype[t] = vs[e][t];
       });
     }),
-      bs.use([
+      ys.use([
         function ({ swiper: e, on: t, emit: s }) {
           const n = Lt();
           let i = null,
@@ -8031,8 +8028,8 @@
             });
         },
       ]);
-    const ys = bs;
-    function ws(e, t, s, n) {
+    const ws = ys;
+    function Ss(e, t, s, n) {
       const i = Tt();
       return (
         e.params.createElements &&
@@ -8050,7 +8047,7 @@
         s
       );
     }
-    function Ss({ swiper: e, extendParams: t, on: s, emit: n }) {
+    function xs({ swiper: e, extendParams: t, on: s, emit: n }) {
       function i(t) {
         let s;
         return (
@@ -8093,7 +8090,7 @@
       function c() {
         const t = e.params.navigation;
         if (
-          ((e.params.navigation = ws(
+          ((e.params.navigation = Ss(
             e,
             e.originalParams.navigation,
             e.params.navigation,
@@ -8197,13 +8194,13 @@
         destroy: d,
       });
     }
-    function xs(e = "") {
+    function Cs(e = "") {
       return `.${e
         .trim()
         .replace(/([\.:!\/])/g, "\\$1")
         .replace(/ /g, ".")}`;
     }
-    function Cs({ swiper: e, extendParams: t, on: s, emit: n }) {
+    function Es({ swiper: e, extendParams: t, on: s, emit: n }) {
       const i = "swiper-pagination";
       let r;
       t({
@@ -8343,8 +8340,8 @@
         }
         if (
           ("fraction" === s.type &&
-            (c.find(xs(s.currentClass)).text(s.formatFractionCurrent(d + 1)),
-            c.find(xs(s.totalClass)).text(s.formatFractionTotal(u))),
+            (c.find(Cs(s.currentClass)).text(s.formatFractionCurrent(d + 1)),
+            c.find(Cs(s.totalClass)).text(s.formatFractionTotal(u))),
           "progressbar" === s.type)
         ) {
           let t;
@@ -8360,7 +8357,7 @@
             r = 1;
           "horizontal" === t ? (i = n) : (r = n),
             c
-              .find(xs(s.progressbarFillClass))
+              .find(Cs(s.progressbarFillClass))
               .transform(`translate3d(0,0,0) scaleX(${i}) scaleY(${r})`)
               .transition(e.params.speed);
         }
@@ -8393,7 +8390,7 @@
             t.renderBullet
               ? (r += t.renderBullet.call(e, s, t.bulletClass))
               : (r += `<${t.bulletElement} class="${t.bulletClass}"></${t.bulletElement}>`);
-          i.html(r), (e.pagination.bullets = i.find(xs(t.bulletClass)));
+          i.html(r), (e.pagination.bullets = i.find(Cs(t.bulletClass)));
         }
         "fraction" === t.type &&
           ((r = t.renderFraction
@@ -8408,7 +8405,7 @@
           "custom" !== t.type && n("paginationRender", e.pagination.$el[0]);
       }
       function u() {
-        e.params.pagination = ws(
+        e.params.pagination = Ss(
           e,
           e.originalParams.pagination,
           e.params.pagination,
@@ -8436,7 +8433,7 @@
             t.progressbarOpposite &&
             s.addClass(t.progressbarOppositeClass),
           t.clickable &&
-            s.on("click", xs(t.bulletClass), function (t) {
+            s.on("click", Cs(t.bulletClass), function (t) {
               t.preventDefault();
               let s = It(this).index() * e.params.slidesPerGroup;
               e.params.loop && (s += e.loopedSlides), e.slideTo(s);
@@ -8454,7 +8451,7 @@
           e.pagination.bullets &&
             e.pagination.bullets.removeClass &&
             e.pagination.bullets.removeClass(t.bulletActiveClass),
-          t.clickable && s.off("click", xs(t.bulletClass));
+          t.clickable && s.off("click", Cs(t.bulletClass));
       }
       s("init", () => {
         !1 === e.params.pagination.enabled ? f() : (u(), d(), c());
@@ -8531,7 +8528,7 @@
         destroy: p,
       });
     }
-    function Es({ swiper: e, extendParams: t, on: s }) {
+    function Ts({ swiper: e, extendParams: t, on: s }) {
       t({ parallax: { enabled: !1 } });
       const n = (t, s) => {
           const { rtl: n } = e,
@@ -8615,7 +8612,7 @@
             })(s);
         });
     }
-    function Ts({ swiper: e, extendParams: t, on: s, emit: n }) {
+    function Os({ swiper: e, extendParams: t, on: s, emit: n }) {
       let i;
       function r() {
         if (!e.size)
@@ -8757,7 +8754,7 @@
         }),
         Object.assign(e.autoplay, { pause: l, run: r, start: a, stop: o });
     }
-    function Os({ swiper: e, extendParams: t, on: s }) {
+    function Ls({ swiper: e, extendParams: t, on: s }) {
       t({
         thumbs: {
           swiper: null,
@@ -8883,7 +8880,7 @@
                 ? n
                 : void 0 === n
                 ? t
-                : n - l == l - t
+                : n - l === l - t
                 ? s.params.slidesPerGroup > 1
                   ? n
                   : l
@@ -8922,7 +8919,7 @@
         }),
         Object.assign(e.thumbs, { init: a, update: o });
     }
-    function Ls() {
+    function As() {
       let e = document.querySelectorAll(
         '[class*="__swiper"]:not(.swiper-wrapper)'
       );
@@ -8936,10 +8933,10 @@
     window.addEventListener("load", function (e) {
       !(function () {
         if (
-          (Ls(),
+          (As(),
           document.querySelector(".main-block__slider") &&
-            new ys(".main-block__slider", {
-              modules: [Ss, Cs, Es, Ts],
+            new ws(".main-block__slider", {
+              modules: [xs, Es, Ts, Os],
               autoplay: { delay: 8e3, disableOnInteraction: !1 },
               observer: !0,
               observeParents: !0,
@@ -8968,8 +8965,8 @@
               },
             }),
           document.querySelector(".products-slider") &&
-            new ys(".products-slider__slider", {
-              modules: [Ss, Cs, Ts],
+            new ws(".products-slider__slider", {
+              modules: [xs, Es, Os],
               autoplay: { delay: 3e3, disableOnInteraction: !1 },
               observer: !0,
               observeParents: !0,
@@ -8992,8 +8989,8 @@
               on: { init: function (e) {} },
             }),
           document.querySelector(".products-new") &&
-            new ys(".products-new__slider", {
-              modules: [Ss, Cs, Ts],
+            new ws(".products-new__slider", {
+              modules: [xs, Es, Os],
               autoplay: { delay: 3e3, disableOnInteraction: !1 },
               observer: !0,
               observeParents: !0,
@@ -9017,8 +9014,8 @@
             }),
           document.querySelector(".thumbs-images"))
         ) {
-          const e = new ys(".thumbs-images", {
-            modules: [Ss, Cs, Ts, Os],
+          const e = new ws(".thumbs-images", {
+            modules: [xs, Es, Os, Ls],
             observer: !0,
             observeParents: !0,
             watchOverflow: !0,
@@ -9037,8 +9034,8 @@
             },
             on: { init: function (e) {} },
           });
-          new ys(".images-product__slider", {
-            modules: [Ss, Cs, Ts, Os],
+          new ws(".images-product__slider", {
+            modules: [xs, Es, Os, Ls],
             autoplay: { delay: 3e3, disableOnInteraction: !1 },
             thumbs: { swiper: e },
             observer: !0,
@@ -9162,19 +9159,19 @@
           );
       }
     })({});
-    let As = !1;
-    function Ps(e) {
+    let Ps = !1;
+    function ks(e) {
       this.type = e;
     }
     setTimeout(() => {
-      if (As) {
+      if (Ps) {
         let e = new Event("windowScroll");
         window.addEventListener("scroll", function (t) {
           document.dispatchEvent(e);
         });
       }
     }, 0),
-      (Ps.prototype.init = function () {
+      (ks.prototype.init = function () {
         const e = this;
         (this.оbjects = []),
           (this.daClassname = "_dynamic_adapt_"),
@@ -9226,7 +9223,7 @@
             this.mediaHandler(i, a);
         }
       }),
-      (Ps.prototype.mediaHandler = function (e, t) {
+      (ks.prototype.mediaHandler = function (e, t) {
         if (e.matches)
           for (let e = 0; e < t.length; e++) {
             const s = t[e];
@@ -9240,7 +9237,7 @@
               this.moveBack(s.parent, s.element, s.index);
           }
       }),
-      (Ps.prototype.moveTo = function (e, t, s) {
+      (ks.prototype.moveTo = function (e, t, s) {
         t.classList.add(this.daClassname),
           "last" === e || e >= s.children.length
             ? s.insertAdjacentElement("beforeend", t)
@@ -9248,17 +9245,17 @@
             ? s.children[e].insertAdjacentElement("beforebegin", t)
             : s.insertAdjacentElement("afterbegin", t);
       }),
-      (Ps.prototype.moveBack = function (e, t, s) {
+      (ks.prototype.moveBack = function (e, t, s) {
         t.classList.remove(this.daClassname),
           void 0 !== e.children[s]
             ? e.children[s].insertAdjacentElement("beforebegin", t)
             : e.insertAdjacentElement("beforeend", t);
       }),
-      (Ps.prototype.indexInParent = function (e, t) {
+      (ks.prototype.indexInParent = function (e, t) {
         const s = Array.prototype.slice.call(e.children);
         return Array.prototype.indexOf.call(s, t);
       }),
-      (Ps.prototype.arraySort = function (e) {
+      (ks.prototype.arraySort = function (e) {
         "min" === this.type
           ? Array.prototype.sort.call(e, function (e, t) {
               return e.breakpoint === t.breakpoint
@@ -9283,7 +9280,7 @@
                 : t.breakpoint - e.breakpoint;
             });
       });
-    new Ps("max").init(),
+    new ks("max").init(),
       document.addEventListener("click", function (e) {
         const t = e.target;
         if (t.closest("[data-parent]")) {
@@ -9329,9 +9326,9 @@
               .classList.remove("_sub-menu-open"),
           e.preventDefault());
       });
-    const ks = document.querySelectorAll(".sub-menu-catalog__block");
-    ks.length &&
-      ks.forEach((e) => {
+    const Ms = document.querySelectorAll(".sub-menu-catalog__block");
+    Ms.length &&
+      Ms.forEach((e) => {
         const t = e.querySelectorAll(".sub-menu-catalog__category").length;
         e.classList.add(`sub-menu-catalog__block_${t}`);
       }),

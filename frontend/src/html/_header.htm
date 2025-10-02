@@ -10,7 +10,11 @@
 					<li class="menu-top-header__item"><a href="home.html" class="menu-top-header__link">Контакты</a></li>
 				</ul>
 			</nav>
-			<a href="#" class="top-header__user _icon-user"><span>Вступай в наши ряды!</span></a>
+			<a href="#" class="top-header__user _icon-user" data-static><span>Вступай в наши ряды!</span></a>
+			<a th:href="@{/authentication/login}" class="top-header__user _icon-user" sec:authorize="!isAuthenticated()" data-thymeleaf>
+				<span>Вступай в наши ряды!</span></a>
+			<a th:href="@{/logout}" class="top-header__user _icon-user" sec:authorize="isAuthenticated()" data-thymeleaf>
+				<span>Выйти из личного кабинета</span></a>	
 			<nav hidden class="menu">
 				<button type="button" class="menu__icon icon-menu"><span></span></button>
 				<div class="menu__body"></div>
@@ -22,7 +26,7 @@
 	<div class="header__body body-header">
 		<div class="body-header1__container">
 			<div class="logo-left"><figure><a href="home.html"><img class="logo" src="img\header\logo1.png"></a></figure></div>
-			<a href="home.html"><div class="heading">The Witcher Shop</div></a>
+			<a href="home"><div class="heading">The Witcher Shop</div></a>
 			<div class="logo-right"><figure><a href="home.html"><img class="logo1" src="img\header\logo2.png"></a></figure></div>
 		</div>
 		<div class="body-header__container">

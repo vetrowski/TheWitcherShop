@@ -14,7 +14,7 @@
 - [Node.js](https://nodejs.org/en/download) – среда выполнения JS для поддержки JavaScript на уровне ОС
 - [Git](https://git-scm.com/downloads/win) – система контроля версий для отслеживания изменений в файлах и управления репозиторием
 - [GitHub Desktop](https://desktop.github.com/download) – графический интерфейс для удобной работы с GitHub
-2. Настроить GitHub Desktop (либо пропустить этот шаг и скачать папку с проектом напрямую с GitHub, шаг 3):
+2. Настроить GitHub Desktop (или пропустить этот шаг и скачать папку с проектом напрямую с GitHub, шаг 3):
 - запустить GitHub Desktop
 - авторизоваться через GitHub.com
 - выбрать репозиторий TheWitcherShop
